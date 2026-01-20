@@ -33,4 +33,17 @@ class Server
             'secret' => $this->config->getSecret()
         ]);
     }
+
+    /**
+     * 获取sdk临时票据
+     * @param $access_token
+     * @return array
+     */
+    public function getTicket($access_token)
+    {
+        return $this->http->request('cgi-bin/ticket/getticket',[
+            'access_token' => $access_token,
+            'type' => 'jsapi'
+        ]);
+    }
 }
