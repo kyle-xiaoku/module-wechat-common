@@ -1,0 +1,22 @@
+{
+    "name": "module-wechat/common",
+    "description": "wechat common config",
+    "type": "library",
+    "require": {
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": "^7.10"
+    },
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "ModuleWechat\\Common\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kyle",
+            "email": "1399860604@qq.com"
+        }
+    ]
+}
