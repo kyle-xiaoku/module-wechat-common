@@ -8,10 +8,16 @@ class ConfigUtil
     private string $appid;
     private string $secret;
 
-    public function __construct()
+    public function __construct(string $appid = '', string $secret = '')
     {
-        $this->appid = getenv('WECHAT_APPID');
-        $this->secret = getenv('WECHAT_SECRET');
+        $envAppid = getenv('WECHAT_APPID');
+        $envSecret = getenv('WECHAT_APPID');
+        if ($envAppid && $envSecret) {
+            $appid = $envAppid;
+            $secret = $envSecret;
+        }
+        $this->appid = $appid;
+        $this->secret = $secret;
     }
 
     /**

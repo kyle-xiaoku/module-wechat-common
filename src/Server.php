@@ -15,9 +15,9 @@ class Server
 {
     public ConfigUtil $config;
     public Request $http;
-    public function __construct()
+    public function __construct(string $appid = '', string $secret = '')
     {
-        $this->config = new ConfigUtil();
+        $this->config = new ConfigUtil($appid, $secret);
         $this->http = new Request();
     }
 
