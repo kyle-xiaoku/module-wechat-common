@@ -5,11 +5,13 @@ namespace ModuleWechat\Common;
 
 use ModuleWechat\Common\Config\ConfigUtil;
 use ModuleWechat\Common\Config\Request;
+use ModuleWechat\Common\helper\MiniprogramInterface;
+use ModuleWechat\Common\Helper\MpOauthInterface;
 
 /**
  * 基础类
- * @property $mp
- * @property $miniprogram
+ * @property MpOauthInterface $mp
+ * @property MiniprogramInterface $miniprogram
 */
 class WechatServer
 {
