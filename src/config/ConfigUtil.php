@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ModuleWechat\Common\Config;
 
+use ReflectionClass;
+
 class ConfigUtil
 {
     private string $appid;
@@ -36,5 +38,14 @@ class ConfigUtil
     public function getSecret()
     {
         return $this->secret;
+    }
+
+    public function make($class, array $vars = [])
+    {
+        $reflect = new ReflectionClass($class);
+
+        $object = $reflect->newInstanceArgs($vars);
+
+        return $object;
     }
 }

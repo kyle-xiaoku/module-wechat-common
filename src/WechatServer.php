@@ -11,10 +11,18 @@ use ModuleWechat\Common\Config\Request;
  * @property $mp
  * @property $miniprogram
 */
-class Server
+class WechatServer
 {
     public ConfigUtil $config;
     public Request $http;
+    protected array $binds = [
+        'mp' => 'ModuleWechat\Oauth\WechatOauthServer',
+        'miniprogram' => 'ModuleWechat\Miniprogram\WechatMiniProgramServer',
+    ];
+    protected array $instances = [
+        'mp' => null,
+        'miniprogram' => null
+    ];
     public function __construct(string $appid = '', string $secret = '')
     {
         $this->config = new ConfigUtil($appid, $secret);
@@ -45,5 +53,13 @@ class Server
             'access_token' => $access_token,
             'type' => 'jsapi'
         ]);
+    }
+
+    public function __get($name)
+    {
+        if (is_null($this->instances[$name])) {
+            $this->instances[$name] = $this->config->make($this->binds[$name],[$this]);
+        }
+        return $this->instances[$name];
     }
 }
