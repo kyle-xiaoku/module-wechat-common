@@ -10,7 +10,7 @@ use ModuleWechat\Common\Helper\MpOauthInterface;
 
 /**
  * 基础类
- * @property MpOauthInterface $mp
+ * @property MpOauthInterface $oauth
  * @property MiniprogramInterface $miniprogram
 */
 class WechatServer
@@ -18,11 +18,11 @@ class WechatServer
     public ConfigUtil $config;
     public Request $http;
     protected array $binds = [
-        'mp' => 'ModuleWechat\Oauth\WechatOauthServer',
+        'oauth' => 'ModuleWechat\Oauth\WechatOauthServer',
         'miniprogram' => 'ModuleWechat\Miniprogram\WechatMiniProgramServer',
     ];
     protected array $instances = [
-        'mp' => null,
+        'oauth' => null,
         'miniprogram' => null
     ];
     public function __construct(string $appid = '', string $secret = '')

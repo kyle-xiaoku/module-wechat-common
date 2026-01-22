@@ -43,9 +43,6 @@ class ConfigUtil
     public function make($class, array $vars = [])
     {
         $reflect = new ReflectionClass($class);
-
-        $object = $reflect->newInstanceArgs($vars);
-
-        return $object;
+        return $reflect->newInstanceArgs($vars);
     }
 }
